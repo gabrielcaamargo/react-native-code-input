@@ -1,20 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Alert, Text, TouchableOpacity, View } from "react-native";
+import { CodeInput } from "./components/CodeInput";
+import { useState } from "react";
 
 export default function App() {
+  const [code, setCode] = useState("")
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={{ backgroundColor: '#FAFAFA', flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <CodeInput setFinalText={setCode} numberOfInputs={4} />
+      <TouchableOpacity onPress={() => Alert.alert(code)} style={{ marginTop: 24 }}>
+        <Text>Click me!</Text>
+      </TouchableOpacity>
     </View>
-  );
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
